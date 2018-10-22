@@ -13,7 +13,7 @@ http(s)://网址/index.php?t=唯一标识码&url=扫码后电脑网页转跳的�
 
 （index中默认的转跳判定为手机支付宝APP扫码判定）
 
-如何判定微信扫码：将`if(strpos($_SERVER['HTTP_USER_AGENT'], 'AlipayClient') !== false)`修改为if `( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false )`
+如何判定微信扫码：将`if(strpos($_SERVER['HTTP_USER_AGENT'], 'AlipayClient') !== false)`修改为`if( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false )`
 
 当然，你可以两者一起使用，这样无论是微信扫码还是支付宝扫码均可让电脑端网页转跳。也可以取消判定，只要手机扫码就会转跳。
 
@@ -21,16 +21,20 @@ http(s)://网址/index.php?t=唯一标识码&url=扫码后电脑网页转跳的�
 php环境：建议使用php5以上环境，本项目制作环境为php7.2
 
 ## 声明
-使用API资源：Hitokoto[一言] API，用于动态显示语句。
-引用CDN资源：jQUery，方便POST回调
+使用API资源：Hitokoto[一言] API，用于动态显示语句
+            二维码生成API，用于显示动态的地址
+
+引用CDN资源：jQuery，方便POST回调
 
 ## 项目思路
-1.传入 扫码后电脑端转跳的地址：url 与 唯一标识码：t  通过唯一标识码在当前目录下生成 t.check 文件，网页每秒请求check.php来检查t.check。
+1.传入 扫码后电脑端转跳的地址：url 与 唯一标识码：t  通过唯一标识码在当前目录下生成 t.check 文件，网页每秒请求check.php来检查t.check
 
-2.用户在电脑端访问时会产生一个k值，因为访问时未传入k值，所以不会产生扫码判定。
+2.用户在电脑端访问时会产生一个k值，因为访问时未传入k值，所以不会产生扫码判定
 
-3.根据传入的t和k的值，生成链接到当前页面的url二维码。
+3.根据传入的t和k的值，生成链接到当前页面的url二维码
 
-4.手机端扫码二维码传入k和t值，产生扫码判定，如果是指定app扫码，app上转跳到相应的页面，并将k值写入到t.check文件中。
+4.手机端扫码二维码传入k和t值，产生扫码判定，如果是指定app扫码，app上转跳到相应的页面，并将k值写入到t.check文件中
 
-5.电脑端回调函数请求check.php返回成功，则产生页面转跳
+5.电脑端回调函数请求check.php返回成功，产生页面转跳
+
+6.如果未扫码，且关闭了该网页，直接删除目录下的check文件
