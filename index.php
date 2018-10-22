@@ -19,6 +19,9 @@ $txt = $key;
 fwrite($myfile, $txt);
 fclose($myfile);
 header('location:https://qr.alipay.com/c1x0218130dtyyhcsat2yd7');
+}else{
+echo '<h1>请使用支付宝扫码！</h1>';
+exit();
 }
 }
 ?>
