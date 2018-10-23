@@ -3,18 +3,15 @@ if(!isset($_GET['t'])){
  echo "无效的请求！";
  exit();
 }
-$url=$_GET['url'];
+$urllist=json_decode($json,true);
+$url=$_GET['u'];
 $token=$_GET['t'];
 if(!isset($_GET['k'])){
 $key=substr(md5(rand()),28);
-$myfile = fopen("$token.txt", "w");
-$txt = "喵喵喵？";
-fwrite($myfile, $txt);
-fclose($myfile);
 }else{
 $key=$_GET['k'];
 if(strpos($_SERVER['HTTP_USER_AGENT'], 'AlipayClient') !== false){
-$myfile = fopen("$token.txt", "w");
+$myfile = fopen("$token.check", "w");
 $txt = $key;
 fwrite($myfile, $txt);
 fclose($myfile);
@@ -53,7 +50,7 @@ exit();
 			<input type="button" class="sub" value="New">
 		</div>
 	</div>
-	<div><br ><br ><p style="color:#ffffff">扫码后继续</p>
+	<div><br ><br ><p style="color:#ffffff">↓领取红包后继续↓</p>
     <img id="page-url" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==">
 </div>
     <script>
@@ -73,18 +70,17 @@ exit();
     function urlEncode(String) {
         return encodeURIComponent(String).replace(/'/g,"%27").replace(/"/g,"%22");	
     }
-    </script>
-    <script>
 var interval1= setInterval(function () {
        $.post("./check.php",{
         token:'<?php echo $token;?>',
-       	key:'<?php echo $key;?>'
+       	key:'<?php echo $key;?>',
+        url:'<?php echo $url;?>'
     },
 	function(data,status){
       	var res=JSON.parse(data);
       	if(res.code==1){
             clearInterval(interval1);
-          	window.location.href = "<?php echo $url;?>";
+          	window.location.href = res.url;
         }
 	});}, 1000);//1秒钟循环
     </script>
