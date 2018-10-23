@@ -1,6 +1,10 @@
 # URL-transfer-station是什么？
 URL-transfer-station是一个网址中转站，只有用户在使用手机 支付宝 or 微信 扫描指定二维码后，网页转跳到指定网址的万用API，便于个人站长实现盈利。
 
+## DEMO
+
+[一个支付宝扫码转跳Github的网站](http://api.jx3pvall.com/?t=dfaiw&u=github)
+
 ## 使用说明
 
 可以以如下的形式对API进行调用：
