@@ -17,6 +17,7 @@ unlink("./$token.check");
 }
 else{
    $arr = ['code' => 500, 'msg' => 'ERROR'];
+   unlink("./$token.check");
 }
 }else{
    $arr = ['code' => 0, 'msg' => 'ERROR'];
