@@ -5,6 +5,12 @@ URL-transfer-station是一个网址中转站，只有用户在使用手机 支�
 
 [一个支付宝扫码转跳Github的网站](http://api.jx3pvall.com/?t=dfaiw&u=github)
 
+## 写在前面
+
+如果我的项目对你有所帮助，请不要吝啬你的star，如果在使用时遇到问题或者需要帮助，可以在issues中联系我，我每天都会打开github。
+
+作者目前还在上学，需要你们的star来帮我做一个好看的github名片，以便求职。
+
 ## 使用说明
 
 可以以如下的形式对API进行调用：
@@ -29,11 +35,14 @@ http(s)://网址/index.php?t=唯一标识码&u=网址标识符
 
 如果不在url.json内的网址则转跳404目录（可自行修改转跳页）
 
-## 其它文件
-
-### api.php
+## api.php
 
 按提示修改其中的关键项，可以用GET请求让它从Mysql数据库中获取网站的url，并覆盖更新url.json文件。
+
+Mysql语句帮助可见：[Mysql教程](http://www.runoob.com/mysql/mysql-tutorial.html)
+
+如果手动输入url.json的key-value值，则可删除api.php文件
+
 
 ## 依赖环境
 php环境：建议使用php5以上环境，本项目制作环境为php7.2
