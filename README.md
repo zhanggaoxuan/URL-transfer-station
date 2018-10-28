@@ -3,7 +3,7 @@ URL-transfer-station是一个网址中转站，只有用户在使用手机 支�
 
 ### DEMO
 
-[一个支付宝扫码转跳Github的网站](http://api.jx3pvall.com/?t=dfaiw&u=github)
+[一个支付宝扫码转跳Github的网站](http://api.jx3pvall.com/?u=github)
 
 ### 写在前面
 
@@ -16,7 +16,7 @@ URL-transfer-station是一个网址中转站，只有用户在使用手机 支�
 可以以如下的形式对API进行调用：
 
 ```
-http(s)://网址/index.php?t=唯一标识码&u=网址标识符
+http(s)://网址/index.php?u=网址标识符
 ```
 
 #### 安装步骤一
@@ -55,6 +55,9 @@ Hitokoto[一言] API，用于动态显示语句
 jQuery，方便POST回调
 
 ## 更新日志
+#### 2018.10.28 更新
+
+1.修改index.php，将其中的token（即URL中的t参数）取消，原key值共用于token值与key值，以防止同一个t值的链接互相干扰。
 
 #### 2018.10.25 更新
 
@@ -65,17 +68,3 @@ jQuery，方便POST回调
 1.取消访问页面创建check文件，只有在支付宝扫码时才会创建check文件。
 
 2.为防止直接传入url网址给了用户绕过扫码的可能，将网址数据以key-value的模式存储在url.json文件中。
-
-#### 2018.10.22 创建
-
-1.传入 扫码后电脑端转跳的地址：url 与 唯一标识码：t  通过唯一标识码在当前目录下生成 t.check 文件，网页每秒请求check.php来检查t.check
-
-2.用户在电脑端访问时会产生一个k值，因为访问时未传入k值，所以不会产生扫码判定
-
-3.根据传入的t和k的值，生成链接到当前页面的url二维码
-
-4.手机端扫码二维码传入k和t值，产生扫码判定，如果是指定app扫码，app上转跳到相应的页面，并将k值写入到t.check文件中
-
-5.电脑端回调函数请求check.php返回成功，产生页面转跳
-
-6.如果未扫码，超过一定时间删除.check文件（暂未实现）
