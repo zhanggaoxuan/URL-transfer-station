@@ -1,17 +1,13 @@
 <?php
-if(!isset($_GET['t'])){
- echo "无效的请求！";
- exit();
+if(isset($_GET['u'])){
+ $url=$_GET['u'];
 }
-$urllist=json_decode($json,true);
-$url=$_GET['u'];
-$token=$_GET['t'];
 if(!isset($_GET['k'])){
 $key=substr(md5(rand()),28);
 }else{
 $key=$_GET['k'];
 if(strpos($_SERVER['HTTP_USER_AGENT'], 'AlipayClient') !== false){
-$myfile = fopen("$token.check", "w");
+$myfile = fopen("$key.check", "w");
 $txt = $key;
 fwrite($myfile, $txt);
 fclose($myfile);
@@ -65,14 +61,14 @@ exit();
         var str=window.location.href;
       	var str2=GetUrlPara();
 		str=str.replace(str2,"");
-        document.getElementById("page-url").src = setting.qrcodeApi + urlEncode(str+"<?php echo "t=$token&k=$key";?>");
+        document.getElementById("page-url").src = setting.qrcodeApi + urlEncode(str+"<?php echo "k=$key";?>");
     });
     function urlEncode(String) {
         return encodeURIComponent(String).replace(/'/g,"%27").replace(/"/g,"%22");	
     }
 var interval1= setInterval(function () {
        $.post("./check.php",{
-        token:'<?php echo $token;?>',
+        token:'<?php echo $key;?>',
        	key:'<?php echo $key;?>',
         url:'<?php echo $url;?>'
     },
