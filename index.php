@@ -58,6 +58,7 @@ exit();
 　　　　return para;
 　　}
     $(function(){
+	$.get("./del.php",function(data,status){console.log(data);});
         var str=window.location.href;
       	var str2=GetUrlPara();
 		str=str.replace(str2,"");
