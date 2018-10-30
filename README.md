@@ -61,6 +61,8 @@ jQuery，方便POST回调
 
 1.增加del.php用于删除过期文件，并在index.php增加其调用方法。
 
+2.readme.md中增加微博扫码判定语句的帮助。
+
 #### 2018.10.28 更新
 
 1.修改index.php，将其中的token（即URL中的t参数）取消，原key值共用于token值与key值，以防止同一个t值的链接互相干扰。
