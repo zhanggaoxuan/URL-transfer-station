@@ -27,6 +27,8 @@ http(s)://网址/index.php?u=网址标识符
 
 如何判定微信扫码：将`if(strpos($_SERVER['HTTP_USER_AGENT'], 'AlipayClient') !== false)`修改为`if( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false )`
 
+如何判定微博扫码：将`if(strpos($_SERVER['HTTP_USER_AGENT'], 'AlipayClient') !== false)`修改为`if( strpos($_SERVER['HTTP_USER_AGENT'], 'Weibo') !== false )`
+
 当然，你可以两者一起使用，这样无论是微信扫码还是支付宝扫码均可让电脑端网页转跳。也可以取消判定，只要手机扫码就会转跳。
 
 #### 安装步骤二
