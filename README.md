@@ -55,6 +55,10 @@ Hitokoto[一言] API，用于动态显示语句
 jQuery，方便POST回调
 
 ## 更新日志
+#### 2018.10.30 更新
+
+1.增加del.php用于删除过期文件，并在index.php增加其调用方法。
+
 #### 2018.10.28 更新
 
 1.修改index.php，将其中的token（即URL中的t参数）取消，原key值共用于token值与key值，以防止同一个t值的链接互相干扰。
